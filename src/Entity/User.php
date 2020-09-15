@@ -10,8 +10,7 @@ class User
     private string $password;
     private int $creation;
     private string $image;
-    public array $userList;
-    public User $user;
+    private array $userList;
 
 
     public function getId(): ?int
@@ -63,6 +62,18 @@ class User
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUserList(): ?array
+    {
+        return $this->userList;
+    }
+
+    public function setUserList(string $userList): self
+    {
+        $this->userList = $userList;
 
         return $this;
     }
