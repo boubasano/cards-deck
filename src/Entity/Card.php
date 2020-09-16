@@ -4,9 +4,10 @@ namespace MagicDeck\Entity;
 
 class Card
 {
+    
     private int $id;
     private string $name;
-    private string $mana_cost;
+    private string $manaCost;
     public array $colorList;
 
     public function getId(): ?int
@@ -26,14 +27,14 @@ class Card
         return $this;
     }
 
-    public function getMana_cost(): ?string
+    public function getManaCost(): ?string
     {
-        return $this->mana_cost;
+        return $this->manaCost;
     }
 
-    public function setMana_cost(string $mana_cost): self
+    public function setManaCost(string $manaCost): self
     {
-        $this->mana_cost = $mana_cost;
+        $this->manaCost = $manaCost;
 
         return $this;
     }
