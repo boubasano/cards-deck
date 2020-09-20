@@ -2,51 +2,28 @@
 
 namespace MagicDeck\Services;
 
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Client;
-use MagicDeck\Entity\Card;
+use MagicDeck\Services\ApiService\ApiService;
+use MagicDeck\Services\Builder\CardBuilderService;
 
-
-
-class CardService {
-
-    private $res;
-    private $client;
-
-function findAll () 
+/**
+ * This service use the ApiService to get data and to keep it
+ */
+class CardService
 {
+    public function findAll(): array
+    {
+        $apiService = new ApiService();
+        $cardBuilder = new CardBuilderService();
 
- $apiData = __DIR__.'/../../var/cache/card.json';
-
-if(!file_exists($apiData)){
-    $client = new Client();
-    //requete client pour recuperer nos api
-    $res = $client->request('GET', 'https://api.magicthegathering.io/v1/cards'
-    , ['verify' => false]);
-
-    //permet de mettre en cache nos données reçues 
-    $requestSaved = file_put_contents($apiData, $res->getBody()->getContents());
-}else
-$responseJson = file_get_contents($apiData);
-
-$jsonToObject = json_decode($requestSaved);
-$cardList = [];
-
-foreach ($cardList->cards as $value) {
-    $card = new Card();
-    if (!property_exists($value, "manaCost")) {
-        $value->manaCost = "";
+        $url = $apiService->requestData('https://api.magicthegathering.io/v1/cards', __DIR__.'/../../../var/cache/card.json');
+        $cardList = [];
+        $cardList = $cardBuilder->cardListBuilder($cardList);
+       
+        return $cardList;
+      
     }
-    if (!property_exists($value, "name")) {
-        $value->text = "";
-    }
-   $card->setName($value->name);
-   $card->setManaCost($value->manaCost);
+
 }
-}
-
-
-
 
 
 

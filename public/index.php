@@ -1,21 +1,26 @@
 <?php
 
-use MagicDeck\Services\CardService;
+namespace MagicDeck;
 
+/**
+ * composer autoload
+ */
 require __DIR__. "/../vendor/autoload.php";
 
-$result = new CardService();
+
+
+use MagicDeck\Controller\CardController;
 
 
 
+$url = filter_input(INPUT_SERVER, "REQUEST_URI");
 
-var_dump($result->findAll());
+if ("/cards" === $url || "/cards?" === substr($url, 0, 7)) {
+    $controller = new CardController();
+    $controller->showAll();
+}
 
-
-
-// $requestURL = $_SERVER['REQUEST_URI'];
-
-// if ($requestURL == '/') {
+// if ($requestURL == '/cards') {
 //     // do stuff for the homepage
 // }
 

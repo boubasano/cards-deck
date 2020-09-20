@@ -5,10 +5,28 @@ namespace MagicDeck\Entity;
 class Card
 {
     
+    // private int $id;
+    // private string $name;
+    // private string $manaCost;
+    // public array $colorList;
+    // private string $type;
+    // private string $description;
+    // private string $image;
+
     private int $id;
-    private string $name;
+
     private string $manaCost;
-    public array $colorList;
+
+    private string $type;
+
+    private string $name;
+
+    private string $description;
+
+    private string $image;
+
+    private array $colorList;
+
 
     public function getId(): ?int
     {
@@ -39,6 +57,29 @@ class Card
         return $this;
     }
 
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string  $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+    
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
     public function getColorList(): ?array
     {
         return $this->colorList;
@@ -50,4 +91,19 @@ class Card
 
         return $this;
     }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+    
 }
+
+

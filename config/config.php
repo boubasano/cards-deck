@@ -6,8 +6,8 @@
 
 //ini_set('allow_url_include', 1);
 
-const WEBSITE_TITLE = "Vote App";
-const BASE_URL = "/CoursPHPVoteApp";
+const WEBSITE_TITLE = "Magic Deck";
+const BASE_URL = "/Cards-deck-builder";
 
 const CLASSES_SOURCES = [
     'src/Controller',
