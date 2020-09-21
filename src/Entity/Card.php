@@ -5,27 +5,21 @@ namespace MagicDeck\Entity;
 class Card
 {
     
-    // private int $id;
-    // private string $name;
-    // private string $manaCost;
-    // public array $colorList;
-    // private string $type;
-    // private string $description;
-    // private string $image;
-
     private int $id;
-
-    private string $manaCost;
-
-    private string $type;
 
     private string $name;
 
-    private string $description;
+    private string $manaCost;
 
+    public array $colorList;
+
+    private string $type;
+
+    private string $description;
+    
     private string $image;
 
-    private array $colorList;
+
 
 
     public function getId(): ?int

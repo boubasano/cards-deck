@@ -7,11 +7,7 @@ namespace MagicDeck;
  */
 require __DIR__. "/../vendor/autoload.php";
 
-
-
 use MagicDeck\Controller\CardController;
-
-
 
 $url = filter_input(INPUT_SERVER, "REQUEST_URI");
 
@@ -19,7 +15,14 @@ if ("/cards" === $url || "/cards?" === substr($url, 0, 7)) {
     $controller = new CardController();
     $controller->showAll();
 }
-
+else if ("/cards?color=".$url === substr($url, 0, 7)) {
+    $controller = new CardController();
+    $controller->showAll();
+}
+else if ("/cards?page=".$url === substr($url, 0, 7)) {
+    $controller = new CardController();
+    $controller->showAll();
+}
 // if ($requestURL == '/cards') {
 //     // do stuff for the homepage
 // }

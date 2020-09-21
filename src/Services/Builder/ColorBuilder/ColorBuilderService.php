@@ -1,17 +1,17 @@
 <?php
 
-namespace MagicDeck\Services\Builder;
+namespace MagicDeck\Services\Builder\ColorBuilder;
 
 use MagicDeck\Entity\Color;
 class ColorBuilderService
 {
 
-    public function colorListBuilder(array $colorList): array
+    public function buildColorList(array $apiColorList): array
     {
         $colorList = [];
-        foreach ($colorList as $value) {
+        foreach ($apiColorList as $colorItem) {
             $color = new Color();
-            $color->setValue($value);
+            $color->setValue($colorItem);
             $colorList[] = $color;
         }
         return $colorList;

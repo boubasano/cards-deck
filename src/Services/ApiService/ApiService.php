@@ -1,9 +1,7 @@
 <?php
 namespace MagicDeck\Services\ApiService;
 
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Client;
-use GuzzleHttp\Promise;
 
 /**
  * This class service go to search data with url and  put in the cache
@@ -14,9 +12,6 @@ class ApiService{
 
 function requestData(string $url, string $filename): \stdClass
 {
- $url = 'https://api.magicthegathering.io/v1/cards';
- $filename = __DIR__.'/../../../var/cache/card.json';
-
 if(!file_exists($url)){
     $client = new Client();
     //requete client pour recuperer nos api
