@@ -1,36 +1,29 @@
 <?php
 
-use phpformbuilder\Form;
-use phpformbuilder\Validator\Validator;
+namespace MagicDeck\Form;
+interface FormInterface
+{
 
-/* =============================================
-    start session and include form class
-============================================= */
+    /**
+     * Fill entity with casted request data
+     *
+     * @param $entity mixed
+     * @return array error list
+     */
+    public function fill($entity): array;
 
-$form_id = 'my-form';
+    /**
+     * Is the form valid
+     *
+     * @return bool
+     */
+    public function isValid(): bool;
 
-session_start();
-include_once rtrim($_SERVER['DOCUMENT_ROOT'], DIRECTORY_SEPARATOR) . '/phpformbuilder/Form.php';
+    /**
+     * Is the form submitted
+     *
+     * @return bool
+     */
+    public function isSubmitted(): bool;
 
-/* =============================================
-    validation if posted
-============================================= */
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && Form::testToken($form_id) === true) {
-    // do stuff
 }
-
-/* ==================================================
-    The Form
-================================================== */
-
-$form = new Form($form_id, 'horizontal', 'data-fv-no-icon=true, novalidate');
-// $form->setMode('development');
-
-// enable Ajax loading
-$form->setOptions(['ajax' => true]);
-
-// add your fields & plugins here
-
-// render the form
-$form->render();

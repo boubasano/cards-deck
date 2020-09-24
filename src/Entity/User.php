@@ -12,6 +12,14 @@ class User
     private string $image;
     private array $userList;
 
+    // public function __construct($userList)
+    // {
+    //     $this->userList = $userList;
+    //     $this->email = $userList['boubasano@yahoo.fr'];
+    //     $this->password = $userList['admin'];
+
+    // }
+
 
     public function getId(): ?int
     {

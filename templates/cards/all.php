@@ -1,3 +1,5 @@
+<?php include __DIR__ . "/../header.php" ?>
+
 <h1>liste des cartes </h1>
 
 <a class="waves-effect waves-light btn" href="/cards?color=red">Red</a>
@@ -10,7 +12,6 @@
 <div class="row">
 
 
-
   <?php foreach ($cardList as $card) : ?>
 
     <img src="<?= $card->getImage() ?>">
@@ -19,20 +20,37 @@
   <?php endforeach; ?>
 
   <div class="card-action">
-  <ul class="pagination">
-    <li><a href="/cards?page=1">First</a></li>
-    <li class="<?php if($page <= 1){ echo 'disabled'; } ?>">
-        <a href="<?php if($page <= 1){ echo '#'; } else { echo "/cards?page=".($page - 1); } ?>">Prev</a>
-    </li>
-    <li class="<?php if($page >= $total_pages){ echo 'disabled'; } ?>">
-        <a href="<?php if($page >= $total_pages){ echo '#'; } else { echo "/cards?page=".($page + 1); } ?>">Next</a>
-    </li>
-    <li><a href="/cards?page=<?php echo $total_pages; ?>">Last</a></li>
-</ul>
-
-
+    <ul class="pagination">
+      <li><a href="/cards?page=1">First</a></li>
+      <li class="<?php if ($page <= 1) {
+                    echo 'disabled';
+                  } ?>">
+        <a href="<?php if ($page <= 1) {
+                    echo '#';
+                  } else {
+                    echo "/cards?page=" . ($page - 1);
+                  } ?>">Prev</a>
+      </li>
+      <li class="<?php if ($page >= $total_pages) {
+                    echo 'disabled';
+                  } ?>">
+        <a href="<?php if ($page >= $total_pages) {
+                    echo '#';
+                  } else {
+                    echo "/cards?page=" . ($page + 1);
+                  } ?>">Next</a>
+      </li>
+      <li class="<?php if ($page >= $total_pages) {
+                    echo 'disabled';
+                  } ?>">
+        <a href="<?php if ($page >= $total_pages) {
+                    echo '#';
+                  } else {
+                    echo "/cards?page=<?php echo" . $total_pages;
+                  } ?>">Last</a>
+      </li>
+    </ul>
 
   </div>
 </div>
-
-
+<?php include __DIR__ . "/../footer.php" ?>
